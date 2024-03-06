@@ -17,7 +17,7 @@ with DAG(
         task_id='bash_t2',
         env={
             'START_DATE' : '{{data_interval_start | ds}}',
-            'END_DATE' : '{{data_intercal_end | ds}}'
+            'END_DATE' : '{{data_interval_end | ds}}'
         },
         bash_command='echo $START_DATE && echo $END_DATE' # echo A && B : A커맨드가 성공하면 B커맨드 실행
     )
