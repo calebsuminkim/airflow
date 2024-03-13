@@ -22,7 +22,7 @@ with DAG(
         task_id='bash_pull',
         env={
             'PUSHED_VALUE' : "{{ ti.xcom_pull(key='bash_pushed') }}", # 키값 # xcom_pull(키)
-            'RETURN_VALUE' : "{{ ti.xcom_pull(task_ids='bash_push') }}" # 태스크 아이디
+            'RETURN_VALUE' : "{{ ti.xcom_pull(task_ids='bash_push') }}" # 태스크 아이디를 통해 해당 태스크의 리턴값을 찾아온다.
         },
         bash_command="echo $PUSHED_VALUE && echo $RETURN_VALUE ",
         do_xcom_push=False # xcom에 푸쉬 여부. 기본값은 True
