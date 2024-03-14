@@ -20,6 +20,6 @@ with DAG(
 
     # 2안(권장) : 오퍼레이터 내부에서 Jinja템플릿을 이용해 전역 변수를 가져오기
     bash_var_2 = BashOperator(
-        task_id="bash_var_2"
+        task_id="bash_var_2",
         bash_command="echo variable:{{ var.value.sample_key }}"
     )
