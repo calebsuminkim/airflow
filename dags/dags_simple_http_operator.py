@@ -29,9 +29,15 @@ with DAG(
     def python_2(**kwargs):
         ti = kwargs['ti']
         rslt = ti.xcom_pull(task_ids='get_hr_data') # SimpleHttpOperator가 가진 데이터를 가져오기
-        import xml
+        import xml.etree.ElementTree as ET
         from pprint import pprint
 
-        pprint(xml.loads(rslt))
+        tree = ET.parse(rslt)
+        print(tree)
+        root = tree.getroot()
+        print(f'root : {root}, root/tag : {root.tag}, root/atrrib : {root.attrib}')
+        for child in root:
+            pprint(child.tag, child.atrrib)
+        
 
     get_hr_data >> python_2()
