@@ -36,7 +36,7 @@ with DAG(
         root = ET.fromstring(rslt)
         print(f'root : {root}, root/tag : {root.tag}, root/atrrib : {root.attrib}')
         for child in root:
-            pprint(child.tag, child.attrib)
+            print(child.tag, child.attrib)
         
 
     get_hr_data >> python_2()
