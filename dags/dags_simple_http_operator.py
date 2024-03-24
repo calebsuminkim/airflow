@@ -34,11 +34,11 @@ with DAG(
 
         
         root = ET.fromstring(rslt)
-        print(f'root : {root}, root/tag : {root.tag}, root/atrrib : {root.attrib}')
+        print(f'root : {root}, root/tag : {root.tag}, root/attrib : {root.attrib}')
         # for child in root:
         #     print(child.tag, child.attrib)
-        for child in root.iter('RESULT'):
-            print(child.attrib)
+        for child in root:
+            print(f'Tag : {child.tag}, Content : {child.text}')
         
 
     get_hr_data >> python_2()
