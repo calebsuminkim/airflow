@@ -32,9 +32,8 @@ with DAG(
         import xml.etree.ElementTree as ET
         from pprint import pprint
 
-        tree = ET.parse(rslt)
-        print(tree)
-        root = tree.getroot()
+        
+        root = ET.fromstring(rslt)
         print(f'root : {root}, root/tag : {root.tag}, root/atrrib : {root.attrib}')
         for child in root:
             pprint(child.tag, child.atrrib)
