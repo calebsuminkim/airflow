@@ -25,7 +25,7 @@ with DAG(
     daily_avg_air_quality = SeoulApiToCsvOperator(
         task_id='daily_avg_air_quality',
         dataset_nm='DailyAverageAirQuality',
-        crtr_date='{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}' # 추가 코드 : 데이터 기준 실행 날짜를 기준으로 해당 날짜의 데이터 가져오기 위함
+        crtr_date='{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}', # 추가 코드 : 데이터 기준 실행 날짜를 기준으로 해당 날짜의 데이터 가져오기 위함
         path='/opt/airflow/files/DailyAverageAirQuality/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}',
         file_name='DailyAverageAirQuality.csv'
     )
