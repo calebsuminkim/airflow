@@ -13,6 +13,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.path = path
         self.file_name = file_name
         self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + crtr_date # crtr_date 추가
+        self.crtr_date = crtr_date
         self.base_dt = base_dt
         
 
