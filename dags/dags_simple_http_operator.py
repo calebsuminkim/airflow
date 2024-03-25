@@ -19,7 +19,7 @@ with DAG(
         endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/xml/TnJbhntBassOpen/1/10/',
         method='GET',
         headers={
-            'Content-Type':'application/json',
+            'Content-Type':'application/xml',
             'charset':'utf-8',
             'Accept':'*/*'
         }
@@ -39,6 +39,7 @@ with DAG(
         #     print(child.tag, child.attrib)
         for child in root:
             print(f'Tag : {child.tag}, Content : {child.text}')
+        
         
 
     get_hr_data >> python_2()
