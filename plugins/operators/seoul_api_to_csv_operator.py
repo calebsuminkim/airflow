@@ -12,7 +12,13 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.path = path
         self.file_name = file_name
-        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + crtr_date # crtr_date 추가
+        
+        # crtr_date가 있는 경우 endpoint를 다르게 주기 위한 추가 로직
+        if crtr_date is not None:
+            self.endpoint = "/".join(['{{var.value.apikey_openapi_seoul_go_kr}}', 'json', dataset_nm, crtr_date])
+        else:
+            self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
+        
         self.crtr_date = crtr_date
         self.base_dt = base_dt
         
