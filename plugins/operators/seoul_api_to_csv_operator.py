@@ -14,10 +14,11 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.file_name = file_name
         
         # crtr_date가 있는 경우 endpoint를 다르게 주기 위한 추가 로직
-        if crtr_date is not None:
-            self.endpoint = "/".join(['{{var.value.apikey_openapi_seoul_go_kr}}', 'json', dataset_nm, crtr_date])
-        else:
-            self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
+        # if crtr_date is not None:
+        #     self.endpoint = "/".join(['{{var.value.apikey_openapi_seoul_go_kr}}', 'json', dataset_nm, crtr_date])
+        # else:
+        #     self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
             
         
         self.crtr_date = crtr_date
