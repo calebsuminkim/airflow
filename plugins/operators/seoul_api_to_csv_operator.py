@@ -16,10 +16,9 @@ class SeoulApiToCsvOperator(BaseOperator):
         # crtr_date가 있는 경우 endpoint를 다르게 주기 위한 추가 로직
         if crtr_date is not None:
             self.endpoint = "/".join(['{{var.value.apikey_openapi_seoul_go_kr}}', 'json', dataset_nm, crtr_date])
-            self.log.info(f'엔드포인트:{self.endpoint}') # 추가
         else:
             self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
-            self.log.info(f'엔드포인트:{self.endpoint}') # 추가
+            
         
         self.crtr_date = crtr_date
         self.base_dt = base_dt
@@ -28,6 +27,8 @@ class SeoulApiToCsvOperator(BaseOperator):
     def execute(self, context):
         import os
         
+        self.log.info(f'엔드포인트:{self.endpoint}') # 추가
+
         connection = BaseHook.get_connection(self.http_conn_id)
         self.base_url = f'http://{connection.host}:{connection.port}/{self.endpoint}'
 
