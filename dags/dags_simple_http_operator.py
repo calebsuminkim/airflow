@@ -16,10 +16,10 @@ with DAG(
     get_hr_data = SimpleHttpOperator(
         task_id='get_hr_data',
         http_conn_id='openapi.seoul.go.kr',
-        endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/xml/TnJbhntBassOpen/1/10/',
+        endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/json/TnJbhntBassOpen/1/10/',
         method='GET',
         headers={
-            'Content-Type':'application/xml',
+            'Content-Type':'application/json',
             'charset':'utf-8',
             'Accept':'*/*'
         }
@@ -29,16 +29,18 @@ with DAG(
     def python_2(**kwargs):
         ti = kwargs['ti']
         rslt = ti.xcom_pull(task_ids='get_hr_data') # SimpleHttpOperator가 가진 데이터를 가져오기
-        import xml.etree.ElementTree as ET
+        
+        #import xml.etree.ElementTree as ET
+        import json
         from pprint import pprint
 
-        
-        root = ET.fromstring(rslt)
-        print(f'root : {root}, root/tag : {root.tag}, root/attrib : {root.attrib}')
+        pprint(json.loads(rslt))
+        #root = ET.fromstring(rslt)
+        #print(f'root : {root}, root/tag : {root.tag}, root/attrib : {root.attrib}')
         # for child in root:
         #     print(child.tag, child.attrib)
-        for child in root:
-            print(f'Tag : {child.tag}, Content : {child.text}')
+        #for child in root:
+        #   print(f'Tag : {child.tag}, Content : {child.text}')
         
         
 
