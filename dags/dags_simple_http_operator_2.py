@@ -16,10 +16,10 @@ with DAG(
     get_hr_data = SimpleHttpOperator(
         task_id='get_hr_data',
         http_conn_id='openapi.seoul.go.kr',
-        endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/json/TnJbhntBassOpen/1/10/',
+        endpoint='{{var.value.apikey_openapi_seoul_go_kr}}/xml/TnJbhntBassOpen/1/10/',
         method='GET',
         headers={
-            'Content-Type':'application/json',
+            'Content-Type':'application/xml',
             'charset':'utf-8',
             'Accept':'*/*'
         }
