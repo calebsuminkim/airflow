@@ -12,7 +12,7 @@ with DAG(
     def insrt_postgres(ip, port, dbname, user, passwd, **kwargs):
         import psycopg2
         from contextlib import closing
-
+        # 방법1) with구문을 이용하는 방법. 이후에 Hook을 이용하는 방법으로 개선된다.
         with closing(psycopg2.connect(host=ip, dbname=dbname, user=user, password=passwd, port=int(port))) as conn:
             with closing(conn.cursor()) as cursor:
                 dag_id = kwargs.get('ti').dag_id
