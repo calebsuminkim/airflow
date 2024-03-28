@@ -12,7 +12,7 @@ with DAG(
     catchup=False
 ) as dag:
     
-    def get_info(self, **kwargs):
+    def get_info(**kwargs):
         import requests
         from bs4 import BeautifulSoup
         import selenium
@@ -37,7 +37,7 @@ with DAG(
         rank_list = driver.find_element(By.ID, 'rank_list')
         rank_list_splited = rank_list.text.split(' ')
         
-        self.info_dict = {
+        info_dict = {
             'rank' : rank_list_splited[0],
             'step' : rank_list_splited[2],
             'name' : rank_list_splited[4],
@@ -47,7 +47,7 @@ with DAG(
 
         driver.quit()
         
-        return self.info_dict
+        return info_dict
     
     get_info = PythonOperator(
         task_id='get_info',
