@@ -26,10 +26,10 @@ with DAG(
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
 
-        driver_path = '/usr/local/bin/'
+        # driver_path = '/usr/local/bin/'
 
-        #driver = webdriver.Chrome(options = options)
-        driver = webdriver.Chrome(executable_path = driver_path, options = options)
+        driver = webdriver.Chrome(options = options)
+        # driver = webdriver.Chrome(executable_path = driver_path, options = options)
         
         url = 'https://cyphers.nexon.com/ranking/character/january'
         driver.get(url)
