@@ -19,6 +19,6 @@ with DAG(
         op_kwargs={
             'postgres_conn_id' : 'conn-db-postgres-custom',
             'tbl_nm' : 'TbEqkKenvinfo_bulk',
-            'file_nm' : '/opt/airflow/files/TbEqkKenvinfo_bulk/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/TbEqkKenvinfo_bulk.csv'
+            'file_nm' : '/opt/airflow/files/TbEqkKenvinfo/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/TbEqkKenvinfo.csv'
         }
     )
