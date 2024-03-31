@@ -18,7 +18,7 @@ with DAG(
         python_callable=insrt_postgres,
         op_kwargs={
             'postgres_conn_id' : 'conn-db-postgres-custom',
-            'tbl_nm' : 'airPolutionMeasuring1Hour_bulk',
-            'file_nm' : '/opt/airflow/files/airPolutionMeasuring1Hour_bulk/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/airPolutionMeasuring1Hour_bulk.csv'
+            'tbl_nm' : 'TbEqkKenvinfo_bulk',
+            'file_nm' : '/opt/airflow/files/TbEqkKenvinfo_bulk/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/TbEqkKenvinfo_bulk.csv'
         }
     )
