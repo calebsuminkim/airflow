@@ -1,4 +1,4 @@
-from airflow.hook.base import BaseHook
+from airflow.hooks.base import BaseHook
 import psycopg2
 import pandas as pd
 
