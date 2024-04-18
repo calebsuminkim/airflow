@@ -49,7 +49,7 @@ with DAG(
         env={
             'FILE':'/opt/airflow/files/DailyAverageAirQuality/{{ data_interval_end.in_timezone("Asia/Seoul") | ds_nodash }}/DailyAverageAirQuality.csv'
         },
-        bash_command='echo "건수: `cat $FILE | wc -1`"',
+        bash_command='echo "건수: `cat $FILE | wc -l`"',
     )
 
     [sensor_task_by_poke, sensor_task_by_reschedule] >> bash_task
