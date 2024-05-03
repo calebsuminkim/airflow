@@ -9,7 +9,7 @@ dataset_dags_dataset_producer_2 = Dataset("dags_dataset_producer_2")
 with DAG(
     dag_id='dags_dataset_consumer_2',
     schedule=[dataset_dags_dataset_producer_1, dataset_dags_dataset_producer_2],
-    start_date=pendulum.datetime(2024, 5, 1, tz='Asia/'),
+    start_date=pendulum.datetime(2024, 5, 1, tz='Asia/Seoul'),
     catchup=False
 ) as dag:
     bash_task = BashOperator(
